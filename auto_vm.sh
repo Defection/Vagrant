@@ -12,11 +12,14 @@ brew cask install vagrant
 mkdir vagrant
 cd vagrant
 
-# Init vagrant with the correct ubuntu box that we want
+# Before vagrant setup. Add default IP to /etc/host with hostname 'vagrant'
+echo '192.168.56.101  vagrant' | sudo tee -a /etc/hosts > /dev/null
+
+# Init vagrant with the correct ubuntu box. This will also set up an initial Vagrantfile
 vagrant init peru/ubuntu-18.04-server-amd64 \
   --box-version 20190312.01
 
-# Override the existing barebone Vagrantfile with a preconfigured one
+# Override the existing barebones Vagrantfile with a preconfigured one
 curl -O https://raw.githubusercontent.com/Defection/Vagrant/master/Vagrantfile
 
 # Boot up vagrant for the first time
