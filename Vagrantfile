@@ -18,29 +18,15 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "peru/ubuntu-18.04-server-amd64"
-  config.vm.box_version = "20190312.01"
-
-  # create a shared folder between host and guest
-  config.vm.synced_folder "../vagrant", "/vagrant_shared"
-
-  # Default disk size is 50GB, can go higher but not lower.
-  # config.disksize.size = "50GB"
-
+  config.vm.box = "capital_rx_vagrant"
+  
   # Configure virtualbox settings to use 4GB of memory. Tweak as necessary.
   config.vm.provider "virtualbox" do |vb|
     vb.gui = true
     vb.memory = "4096"
     config.vm.network "private_network", :type => 'dhcp', :name => 'vboxnet0', :adapter => 2
   end
-
-  # Ubuntu server comes barebones. Install what we need to get up and running.
-  config.vm.provision "shell", inline: <<-SHELL
-    sudo apt update
-    sudo apt install -y net-tools git vim python3-pip python-pip curl unzip
-    sudo apt upgrade -y
-  SHELL
-
+  
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
