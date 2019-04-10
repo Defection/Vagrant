@@ -22,5 +22,6 @@ vagrant init peru/ubuntu-18.04-server-amd64 \
 # Override the existing barebones Vagrantfile with a preconfigured one
 curl -O https://raw.githubusercontent.com/Defection/Vagrant/master/Vagrantfile
 
+# Hello
 # Boot up vagrant for the first time
 vagrant up
